@@ -1,0 +1,87 @@
+C51 COMPILER V9.01   SHT11                                                                 05/19/2017 15:58:40 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SHT11
+OBJECT MODULE PLACED IN sht11.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE sht11.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1             #include <reg52.h>
+   2          #include "SHT11.h"
+*** WARNING C206 IN LINE 45 OF SHT11.H: 'Delay': missing function-prototype
+   3          #define uchar unsigned char
+   4          #define uint  unsigned int
+   5          #define TEM_TEST         0x03//?度??命令
+   6          #define HUM_TEST          0x05//?度??命令
+   7          #define REG_READ          0x07//?寄存器
+   8          #define REG_WRITE         0x06//?寄存器
+   9          #define FUNCTION_SET    0x01//?置SHT11的工作精度?8位/?度 12位?度 uchar DispData[4] = {0, 1, 2, 3};
+  10          code uchar DispSegmentP0[10]={0x3f,0x06,0x1b,0x0f,0x26,0x2d,0x3d,0x07,0x3f,0x2f}; code uchar DispSegmentP2
+             -[10]={0x00,0x00,0x22,0x22,0x22,0x22,0x22,0x00,0x22,0x22};                           //  0    1   2    3    4   5   6    
+             -7   8    9  % code uchar DispCtrl[4] = {0xef, 0xdF, 0xbf ,0x7F};
+  11          sbit P16=P1^6;
+  12          sbit P26=P2^6;
+  13          sbit P34=P3^4;
+  14          void Temp_delay(unsigned int j)
+  15          {
+  16   1      uchar i;
+  17   1      for(i=100;i>0;i--)
+  18   1      {
+  19   2      for(j;j>0;j--);
+  20   2      }
+  21   1      }
+  22          void Show(uchar  *Buffer)
+  23          {
+  24   1      uchar i;
+  25   1      for    (i=0; i<4; i++)
+  26   1      {
+  27   2      P1 = DispCtrl[i];
+*** ERROR C202 IN LINE 27 OF SHT11.C: 'DispCtrl': undefined identifier
+  28   2      P0 = DispSegmentP0[*Buffer];
+  29   2      P2 = DispSegmentP2[*Buffer];
+  30   2      if(P16==0)
+  31   2      P26=1;
+  32   2      Temp_delay(2);
+  33   2      Buffer++;
+  34   2      }
+  35   1      }
+  36          void  DispConvert(uchar *DispAddr, uint  Temp2Con)
+  37          {
+  38   1      DispAddr[0] = Temp2Con/1000;
+  39   1      DispAddr[1] = (Temp2Con - DispAddr[0]*1000)/100;
+  40   1      DispAddr[2] = (Temp2Con - DispAddr[0]*1000 - DispAddr[1]*100)/10;
+  41   1      DispAddr[3] = Temp2Con -  DispAddr[0]*1000 - DispAddr[1]*100 - DispAddr[2]*10;
+  42   1      }
+  43          void main()
+  44          {
+  45   1      uint temp;
+  46   1      uint dat;
+  47   1      uint Hum;
+  48   1      //float f;
+  49   1      while(1)
+  50   1      {
+  51   2      Show(DispData);
+C51 COMPILER V9.01   SHT11                                                                 05/19/2017 15:58:40 PAGE 2   
+
+*** ERROR C202 IN LINE 51 OF SHT11.C: 'DispData': undefined identifier
+  52   2      SHT11_Write_Register(REG_WRITE,FUNCTION_SET);    temp=SHT11_Measure(TEM_TEST,0x37);
+  53   2      temp=SHT11_Convert_Tempeture12bit(temp);        dat=SHT11_Measure(HUM_TEST,0x0b);
+  54   2      Hum=SHT11_Convert_Humidity8bit(dat,temp);    if(P34==0)
+  55   2      {
+  56   3      P36=1;
+  57   3      P37=0;
+  58   3      DispConvert(DispData,Hum);
+*** ERROR C202 IN LINE 58 OF SHT11.C: 'DispData': undefined identifier
+  59   3      }
+  60   2      else
+  61   2      {
+  62   3      P36=0;
+  63   3      P37=1;
+  64   3      DispConvert(DispData,temp*10);
+*** ERROR C202 IN LINE 64 OF SHT11.C: 'DispData': undefined identifier
+  65   3      }
+  66   2      }
+  67   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  4 ERROR(S)

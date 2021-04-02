@@ -1,0 +1,134 @@
+.kenrobot-plugin
+{
+    /*margin-top: 5px;*/
+    background-color: #fafafa;
+    position: relative;
+}
+
+.kenrobot-plugin .kenrobot-plugin-title
+{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+.kenrobot-plugin .kenrobot-plugin-title > a
+{
+    width: 260px;
+ ;
+    height: 40px;
+    float: left;
+    display: block;
+    cursor: pointer;
+}
+.kenrobot-plugin .kenrobot-plugin-title > a .kenrobot-plugin-logo
+{
+    margin-left:12px;
+    margin-top:6px;
+    width: 28px;
+    height: 28px;
+    float: left;
+    background: url(../img/rabbit-logo2.png) no-repeat;
+    background-size: contain;
+}
+
+.kenrobot-plugin .kenrobot-plugin-title p
+{
+    float: left;
+    width: 190px;
+    color: #999;
+    line-height: 40px;
+    font-size: 12px;
+    padding-left: 10px;
+    color: #7d7d84;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.kenrobot-plugin .kenrobot-plugin-title .kenrobot-codeview-menu
+{
+    margin-top: 7px;
+    /*width:180px;*/
+    height: 26px;
+    float: right;
+
+}
+
+.kenrobot-plugin .kenrobot-plugin-title .kenrobot-codeview-menu li
+{
+    float: right;
+    margin-right: 10px;
+    height: 26px;
+    width: 68px;
+    list-style: none;
+}
+
+.kenrobot-plugin .kenrobot-plugin-title .kenrobot-codeview-menu li > a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    background:#78b1f6;
+    width:68px;
+    height:26px;
+    text-align: center;
+    cursor: pointer;
+}
+.kenrobot-plugin .kenrobot-plugin-title .kenrobot-codeview-menu li > a:hover
+{
+    background-color: #5696E4;
+}
+
+
+
+.kenrobot-plugin .kenrobot-code
+{
+    max-height: 74em;
+    overflow-y: auto;
+    margin-top: 0px !important;
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-top: 0px;
+    padding-top: 10px;
+}
+
+.kenrobot-plugin .kenrobot-code .kenrobot-code-data
+{
+    padding-top: 12px;
+    margin-top: -2px;
+}
+
+.kenrobot-plugin .kenrobot-code .kenrobot-code-data .line-numbers-rows
+{
+    background-color: #fafafa;
+    border-right: 1px solid #eee;
+    margin-top: 0px;
+    padding-top: 12px;
+    bottom: -0.1em;
+
+}
+
+.kenrobot-plugin .kenrobot-code .kenrobot-code-data .line-numbers-rows > span
+{
+    background-color: #fafafa;
+}
+
+.kenrobot-plugin .kenrobot-code .toolbar 
+{
+    margin-top: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px;
+    display: none;
+}
+
+.kenrobot-plugin .kenrobot-code .toolbar .toolbar-item a
+{
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px
+}
+
+.clearfix{clear:both;height:0;overflow:hidden;}
