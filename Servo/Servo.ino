@@ -11,7 +11,8 @@ void setup() {
 }
 void loop() {
   if (Serial.available()) {
-    byte angle = Serial_receive();
+    byte angle = Serial.parseInt();
+//    byte angle = Serial_receive();
     Turn(angle);
   }
 }
